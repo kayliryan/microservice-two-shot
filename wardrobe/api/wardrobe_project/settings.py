@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-e9kf6nups(2tagv+$@pg(p^*4cz#tgffqchjnxqw1c*t7yfauc
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# "localhost", "wardrobe-api"
 
 
 # Application definition
@@ -54,6 +55,7 @@ MIDDLEWARE = [
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
+    
 ]
 
 CORS_ALLOWED_ORIGINS = [

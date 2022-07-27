@@ -27,12 +27,13 @@ SECRET_KEY = 'django-insecure-octnr2p$zuhnw6l6$k*1c$ggb_sg#awm-tv8kqj6+!-fttfo()
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+# "localhost", "wardrobe-api"
 
 # Application definition
 
 INSTALLED_APPS = [
     "corsheaders",
+    "hats_rest.apps.HatsApiConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
