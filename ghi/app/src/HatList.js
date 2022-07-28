@@ -1,5 +1,13 @@
-function HatsList(props) {
+import React from "react";
+
+import { NavLink } from 'react-router-dom';
+
+function HatList(props) {
     return (
+    <React.Fragment>
+    <div className="container-fluid">
+        <NavLink className="navbar-brand" to="/hats/create">Create a Hat</NavLink>
+    </div>
     <table className="table table-striped">
         <thead>
           <tr>
@@ -28,7 +36,8 @@ function HatsList(props) {
           })}
         </tbody>
       </table>
+      </React.Fragment>
     )
 }
 
-export default HatsList
+export default HatList
