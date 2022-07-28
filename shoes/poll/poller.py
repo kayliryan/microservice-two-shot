@@ -18,9 +18,8 @@ def get_bins():
     content = json.loads(response.content)
     print(content)
     for bin in content["bins"]:
-        print(bin)
         BinVO.objects.update_or_create(
-            import_href=bin["href"],
+            import_href=bin["id"],
             defaults={
                 "closet_name": bin["closet_name"],
                 "bin_number": bin["bin_number"],
@@ -34,8 +33,7 @@ def poll():
     while True:
         print('Shoes poller polling for data')
         try:
-            # Write your polling logic, here
-            pass
+            get_bins()
         except Exception as e:
             print(e, file=sys.stderr)
         time.sleep(60)

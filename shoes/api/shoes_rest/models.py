@@ -15,6 +15,6 @@ class Shoe(models.Model):
     picture_url = models.URLField(null=True)
     bin = models.ForeignKey(
         BinVO,
-        related_name='bin',
-        on_delete=models.PROTECT, null=True,
+        related_name='shoes',
+        on_delete=models.CASCADE, null=True,
     )

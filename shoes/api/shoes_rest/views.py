@@ -1,3 +1,4 @@
+from operator import truediv
 from django.http import JsonResponse
 from django.shortcuts import render
 import json
@@ -39,7 +40,6 @@ class ShoeDetailEncoder(ModelEncoder):
     }
 
 
-
 @require_http_methods(['GET', 'POST'])
 def api_list_shoes(request, bin_vo_id=None):
     if request.method == "GET":
@@ -48,14 +48,16 @@ def api_list_shoes(request, bin_vo_id=None):
         else:
             shoes = Shoe.objects.all()
         return JsonResponse(
-        {'shoes': shoes},
-        encoder=ShoeListEncoder
+            {'shoes': shoes},
+            encoder=ShoeListEncoder,
+            safe=False
         )
     else:
         content = json.loads(request.body)
+        print(content)
         try:
             bin_href = content['bin']
-            bin = BinVO.objects.get(import_href=bin_href)
+            bin = BinVO.objects.get(id=bin_href)
             content['bin'] = bin
         except BinVO.DoesNotExist:
             return JsonResponse(
