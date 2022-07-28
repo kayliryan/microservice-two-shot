@@ -29,7 +29,6 @@ DEBUG = True
 ALLOWED_HOSTS = ["localhost", "wardrobe-api"]
 
 
-
 # Application definition
 
 INSTALLED_APPS = [
