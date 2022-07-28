@@ -35,10 +35,11 @@ render() {
     <table className="table table-striped">
         <thead>
           <tr>
-            <th>Style Name</th>
+            <th>Style</th>
             <th>Fabric</th>
             <th>Color</th>
             <th>Picture</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -50,6 +51,9 @@ render() {
                 <td>{ hat.color }</td>
                 {hat.picture_url &&
                 <td><img src={ hat.picture_url } style={{height:"100px", width:"100px"}}></img></td>
+                }
+                {!hat.picture_url &&
+                <td style={{backgroundcolor:"rgba(0, 0, 0, 0)"}}></td>
                 }
                 <td><button onClick={() => this.deleteHat(hat)}>Delete</button></td>
               </tr>
