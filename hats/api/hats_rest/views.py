@@ -22,7 +22,11 @@ class LocationVODetailEncoder(ModelEncoder):
 class HatListEncoder(ModelEncoder):
     model = Hat
     properties = [
+        "fabric",
         "style",
+        "color",
+        "picture_url",
+        "id",
     ]
 
 class HatDetailEncoder(ModelEncoder):

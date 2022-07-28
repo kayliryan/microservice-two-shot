@@ -10,6 +10,6 @@ urlpatterns = [
     path(
         "locations/<int:location_vo_id>/hats/",
         api_list_hats,
-        name="api_list_attendees",
+        name="api_list_hats",
     ),
 ]
