@@ -14,6 +14,7 @@ class HatList extends React.Component {
     const response = await fetch('http://localhost:8090/api/hats/');
     if (response.ok) {
       const data = await response.json();
+      console.log(data);
       this.setState({hats: data.hats});
     }
   }
@@ -26,8 +27,9 @@ class HatList extends React.Component {
     this.setState({hats: updated_hats})
   }
 
-render() {
-  return (
+  render() {
+
+    return (
     <React.Fragment>
     <div className="container-fluid">
         <NavLink className="navbar-brand" to="/hats/create">Create a Hat</NavLink>
@@ -35,14 +37,17 @@ render() {
     <table className="table table-striped">
         <thead>
           <tr>
-            <th>Style Name</th>
+            <th>Style</th>
             <th>Fabric</th>
             <th>Color</th>
             <th>Picture</th>
+            <th>Delete?</th>
+            <th>Location</th>
           </tr>
         </thead>
         <tbody>
           {this.state.hats.map(hat => {
+            console.log(hat);
             return (
               <tr key={hat.id}>
                 <td>{ hat.style }</td>
@@ -50,7 +55,11 @@ render() {
                 <td>{ hat.color }</td>
                 {hat.picture_url &&
                 <td><img src={ hat.picture_url } style={{height:"100px", width:"100px"}}></img></td>
-                }
+              }
+                {!hat.picture_url &&
+                <td style={{backgroundcolor:"rgba(0, 0, 0, 0)"}}></td>
+              }
+                <td>{hat.location.closet_name}</td>
                 <td><button onClick={() => this.deleteHat(hat)}>Delete</button></td>
               </tr>
             );

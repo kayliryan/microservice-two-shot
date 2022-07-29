@@ -36,8 +36,8 @@ class HatForm extends React.Component {
         let response = await fetch(hatUrl, fetchConfig);
         if (response.ok) {
             // console.log("response is ok")
-            const newLocation = await response.json();
-            console.log(newLocation);
+            const newHat = await response.json();
+            // console.log("NewHat", newHat);
             const cleared = {
                 fabric: "",
                 style: "",
@@ -93,23 +93,23 @@ class HatForm extends React.Component {
                 <h1>Create a new Hat</h1>
                 <form onSubmit={this.handleSubmit} id="create-hat-form">
                     <div className="form-floating mb-3">
-                        <input onChange={this.handleFabricChange} placeholder="Fabric" required type="text" name="fabric" id="fabric" className="form-control" />
+                        <input onChange={this.handleFabricChange} placeholder="Fabric" required type="text" name="fabric" value={this.state.fabric} id="fabric" className="form-control" />
                         <label htmlFor="fabric">Fabric</label>
                     </div>
                     <div className="form-floating mb-3">
-                        <input onChange={this.handleStyleChange} placeholder="Style" required type="text" name="style" id="style" className="form-control" />
+                        <input onChange={this.handleStyleChange} placeholder="Style" required type="text" name="style" value={this.state.style} id="style" className="form-control" />
                         <label htmlFor="style">Style</label>
                     </div>
                     <div className="form-floating mb-3">
-                        <input onChange={this.handleColorChange} placeholder="Color" required type="text"  name="color" id="color" className="form-control" />
+                        <input onChange={this.handleColorChange} placeholder="Color" required type="text"  name="color" value={this.state.color} id="color" className="form-control" />
                         <label htmlFor="color">Color</label>
                     </div>
                     <div className="form-label mb-3">
                         <label htmlFor="description">Picture Url</label>
-                        <textarea onChange={this.handlePictureUrlChange} type="text"  name = "picture_url" id="picture_url" className="form-control" rows="3"></textarea>
+                        <textarea onChange={this.handlePictureUrlChange} type="text"  name = "picture_url" value={this.state.pictureUrl} id="picture_url" className="form-control" rows="3"></textarea>
                     </div>
                     <div className="mb-3">
-                        <select onChange={this.handleLocationChange} required id="location" name = "location" className="form-select">
+                        <select onChange={this.handleLocationChange} required id="location" name = "location" value={this.state.location} className="form-select">
                         <option value="">Choose a location</option>
                         {this.state.locations.map(location => {
                             return (
