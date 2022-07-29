@@ -16,7 +16,6 @@ from shoes_rest.models import BinVO
 def get_bins():
     response = requests.get("http://wardrobe-api:8000/api/bins/")
     content = json.loads(response.content)
-    print(content)
     for bin in content["bins"]:
         BinVO.objects.update_or_create(
             import_href=bin["id"],
